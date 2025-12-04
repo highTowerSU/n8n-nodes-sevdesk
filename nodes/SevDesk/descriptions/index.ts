@@ -11,5 +11,5 @@ export * from './InvoiceDescription';
 //export * from './OrderPoDescription';
 export * from './PartDescription';
 export * from './UnityDescription';
-//export * from './VoucherDescription';
-//export * from './VoucherPoDescription';
+export * from './VoucherDescription';
+export * from './VoucherPoDescription';
