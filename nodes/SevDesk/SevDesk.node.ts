@@ -26,6 +26,10 @@ import {
 	partOperations,
 	unityFields,
 	unityOperations,
+  orderFields,
+  orderOperations,
+  orderPoFields,
+  orderPoOperations,
 } from './descriptions';
 import { contactAddressFields, contactAddressOperations } from './descriptions/ContactAddressDescription';
 
@@ -101,14 +105,14 @@ export class SevDesk implements INodeType {
 						name: 'Invoice',
 						value: 'invoice',
 					},
-					/*{
+					{
 						name: 'Order',
 						value: 'order',
-					},*/
-					/*{
+					},
+					{
 						name: 'OrderPo',
 						value: 'orderPo',
-					},*/
+					},
 					{
 						name: 'Part',
 						value: 'part',
@@ -145,12 +149,16 @@ export class SevDesk implements INodeType {
 	...checkAccountFields,
 	...checkAccountTransactionOperations,
 	...checkAccountTransactionFields,
-	...invoiceOperations,
-	...invoiceFields,
-	...voucherOperations,
-	...voucherFields,
-	...voucherPoOperations,
+  ...invoiceOperations,
+  ...invoiceFields,
+  ...voucherOperations,
+  ...voucherFields,
+  ...voucherPoOperations,
   ...voucherPoFields,
+  ...orderOperations,
+  ...orderFields,
+  ...orderPoOperations,
+  ...orderPoFields,
 ];
 	};
 }
