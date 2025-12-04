@@ -4,7 +4,7 @@ export * from './CheckAccountDescription';
 export * from './CheckAccountTransactionDescription';
 export * from './CommunicationWayDescription';
 export * from './ContactDescription';
-//export * from './ContactAddressDescription';
+export * from './ContactAddressDescription';
 export * from './CountryDescription';
 export * from './InvoiceDescription';
 export * from './OrderDescription';
