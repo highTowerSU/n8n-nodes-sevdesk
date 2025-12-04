@@ -120,11 +120,11 @@ export class SevDesk implements INodeType {
 					{
 						name: 'Voucher',
 						value: 'voucher',
-					}
-					/*{
+					},
+					{
 						name: 'VoucherPo',
 						value: 'voucherPo',
-					},*/
+					}
 				],
 			},
 	...contactOperations,
@@ -149,6 +149,8 @@ export class SevDesk implements INodeType {
 	...invoiceFields,
 	...voucherOperations,
 	...voucherFields,
+	...voucherPoOperations,
+  ...voucherPoFields,
 ];
 	};
 }
