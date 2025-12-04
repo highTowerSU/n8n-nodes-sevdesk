@@ -1,19 +1,19 @@
 {
   "name": "n8n-nodes-sevdesk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This is an n8n community node. It let's you interact with the sevDesk API. SevDesk is an accounting tool based in germany. You'll find more information on their [website](https://sevdesk.de/).",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "https://nicokowalczyk.de",
+  "homepage": "https://ceneos.net",
   "author": {
-    "name": "Nico Kowalczyk",
-    "email": "kontakt@nicokowalczyk.de"
+    "name": "Christian Debertshäuser",
+    "email": "info@ceneos.net"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nico-kow/n8n-nodes-sevdesk.git"
+    "url": "https://github.com/highTowerSU/n8n-nodes-sevdesk.git"
   },
   "main": "index.js",
   "scripts": {
