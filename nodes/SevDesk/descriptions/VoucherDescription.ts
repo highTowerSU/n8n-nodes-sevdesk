@@ -352,7 +352,7 @@ export const voucherFields: INodeProperties[] = [
 				type: 'boolean',
 				default: false,
 				description:
-					'If true, a feed entry will be created for this booking (if supported by sevDesk).',
+					'Whether a feed entry will be created for this booking (if supported by sevDesk).',
 				routing: {
 					send: {
 						type: 'body',
@@ -602,7 +602,7 @@ export const voucherFields: INodeProperties[] = [
 		type: 'boolean',
 		default: true,
 		description:
-			'If true, all supplied voucher fields will be mapped. This should usually stay enabled.',
+			'Whether all supplied voucher fields will be mapped. This should usually stay enabled.',
 		displayOptions: {
 			show: {
 				resource: ['voucher'],
