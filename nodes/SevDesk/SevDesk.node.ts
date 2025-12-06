@@ -162,7 +162,7 @@ export class SevDesk implements INodeType {
   ...orderOperations,
   ...orderFields,
   ...orderPoOperations,
-  ...orderPoFields,
+  ...orderPoFields
 ];
 	};
 }
