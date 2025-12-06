@@ -24,14 +24,16 @@ import {
 	invoiceOperations,
 	voucherFields,
 	voucherOperations,
+	voucherPoFields,
+	voucherPoOperations,
 	partFields,
 	partOperations,
 	unityFields,
 	unityOperations,
-  orderFields,
-  orderOperations,
-  orderPoFields,
-  orderPoOperations,
+	orderFields,
+	orderOperations,
+	orderPoFields,
+	orderPoOperations,
 } from './descriptions';
 
 export class SevDesk implements INodeType {
