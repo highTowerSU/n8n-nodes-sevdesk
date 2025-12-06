@@ -1,5 +1,5 @@
 {
-  "name": "@ceneos.net/n8n-nodes-sevdesk-voucher",
+  "name": "@ceneos.net/n8n-nodes-sevdesk",
   "version": "0.2.0",
   "description": "This is an n8n community node. It let's you interact with the sevDesk API. SevDesk is an accounting tool based in germany. You'll find more information on their [website](https://sevdesk.de/).",
   "keywords": [
