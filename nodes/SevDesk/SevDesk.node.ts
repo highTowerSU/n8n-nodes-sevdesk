@@ -33,7 +33,6 @@ import {
   orderPoFields,
   orderPoOperations,
 } from './descriptions';
-import { contactAddressFields, contactAddressOperations } from './descriptions/ContactAddressDescription';
 
 export class SevDesk implements INodeType {
 	description: INodeTypeDescription = {
@@ -162,7 +161,7 @@ export class SevDesk implements INodeType {
   ...orderOperations,
   ...orderFields,
   ...orderPoOperations,
-  ...orderPoFields
-];
+  ...orderPoFields,
+],
 	};
 }
