@@ -18,8 +18,7 @@ export const orderPoOperations: INodeProperties[] = [
 			{
 				name: 'Get Many',
 				value: 'getMany',
-				description:
-					'Retrieve order positions depending on the filters defined in the query.',
+				description: 'Retrieve order positions depending on the filters defined in the query',
 				action: 'Get many order positions',
 				routing: {
 					request: {
@@ -50,8 +49,7 @@ export const orderPoFields: INodeProperties[] = [
 	{
 		displayName: 'Order ID',
 		name: 'orderId',
-		description:
-			'Retrieve all order positions belonging to this order. Will set order[id] and order[objectName].',
+		description: 'Retrieve all order positions belonging to this order. Will set order[ID] and order[objectName].',
 		type: 'number',
 		default: 0,
 		required: true,

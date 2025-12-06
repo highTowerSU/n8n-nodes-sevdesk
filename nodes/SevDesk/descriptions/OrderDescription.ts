@@ -12,40 +12,10 @@ export const orderOperations: INodeProperties[] = [
 			},
 		},
 		options: [
-			// ----------------------------------------
-			//              order: getMany
-			// ----------------------------------------
-			{
-				name: 'Get Many',
-				value: 'getMany',
-				description:
-					'Retrieve orders with optional filters (status, contact, date range, order number…).',
-				action: 'Get many orders',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '=/Order',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: {
-									property: 'objects',
-								},
-							},
-						],
-					},
-				},
-			},
-
-			// ----------------------------------------
-			//              order: get
-			// ----------------------------------------
 			{
 				name: 'Get',
 				value: 'get',
-				description: 'Retrieve an order by ID.',
+				description: 'Retrieve an order by ID',
 				action: 'Get an order',
 				routing: {
 					request: {
@@ -64,15 +34,32 @@ export const orderOperations: INodeProperties[] = [
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              order: getPdf
-			// ----------------------------------------
+			{
+				name: 'Get Many',
+				value: 'getMany',
+				description: 'Retrieve orders with optional filters (status, contact, date range, order number…)',
+				action: 'Get many orders',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '=/Order',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: {
+									property: 'objects',
+								},
+							},
+						],
+					},
+				},
+			},
 			{
 				name: 'Get Pdf',
 				value: 'orderGetPdf',
-				description:
-					'Retrieves the PDF document of an order with metadata (filename, mimeType, content…).',
+				description: 'Retrieves the PDF document of an order with metadata (filename, mimeType, content…)',
 				action: 'Get pdf of an order',
 				routing: {
 					request: {
@@ -81,10 +68,18 @@ export const orderOperations: INodeProperties[] = [
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              order: sendViaEmail
-			// ----------------------------------------
+			{
+				name: 'Mark As Sent',
+				value: 'sendBy',
+				description: 'Marks an order as sent by a chosen send type (print, mail, postal, PDF…)',
+				action: 'Mark order as sent',
+				routing: {
+					request: {
+						method: 'PUT',
+						url: '=/Order/{{$parameter.orderId}}/sendBy',
+					},
+				},
+			},
 			{
 				name: 'Send via Email',
 				value: 'sendViaEmail',
@@ -95,23 +90,6 @@ export const orderOperations: INodeProperties[] = [
 					request: {
 						method: 'POST',
 						url: '=/Order/{{$parameter.orderId}}/sendViaEmail',
-					},
-				},
-			},
-
-			// ----------------------------------------
-			//              order: sendBy
-			// ----------------------------------------
-			{
-				name: 'Mark As Sent',
-				value: 'sendBy',
-				description:
-					'Marks an order as sent by a chosen send type (print, mail, postal, PDF…).',
-				action: 'Mark order as sent',
-				routing: {
-					request: {
-						method: 'PUT',
-						url: '=/Order/{{$parameter.orderId}}/sendBy',
 					},
 				},
 			},
@@ -127,7 +105,7 @@ export const orderFields: INodeProperties[] = [
 	{
 		displayName: 'Order ID',
 		name: 'orderId',
-		description: 'ID of the order.',
+		description: 'ID of the order',
 		type: 'number',
 		required: true,
 		default: 0,
@@ -147,8 +125,7 @@ export const orderFields: INodeProperties[] = [
 		name: 'filters',
 		type: 'collection',
 		placeholder: 'Add Filter',
-		description:
-			'There are various parameters which can be used to filter orders (status, dates, contact…).',
+		description: 'There are various parameters which can be used to filter orders (status, dates, contact…)',
 		default: {},
 		displayOptions: {
 			show: {
@@ -160,22 +137,20 @@ export const orderFields: INodeProperties[] = [
 			{
 				displayName: 'Contact ID',
 				name: 'contactId',
-				description:
-					'Retrieve all orders for this contact. Will set contact[id] and contact[objectName].',
+				description: 'Retrieve all orders for this contact. Will set contact[ID] and contact[objectName].',
 				type: 'number',
 				default: 0,
 				routing: {
 					request: {
 						// komplette URL, damit contact[objectName] korrekt gesetzt wird
-						url:
-							'=/Order?contact[id]={{$value}}&contact[objectName]=Contact',
+						url: '=/Order?contact[id]={{$value}}&contact[objectName]=Contact',
 					},
 				},
 			},
 			{
 				displayName: 'Order Number',
 				name: 'orderNumber',
-				description: 'Retrieve all orders with this order number.',
+				description: 'Retrieve all orders with this order number',
 				type: 'string',
 				default: '',
 				routing: {
@@ -189,8 +164,7 @@ export const orderFields: INodeProperties[] = [
 			{
 				displayName: 'Start Date',
 				name: 'startDate',
-				description:
-					'Retrieve all orders with a date equal or greater than this value.',
+				description: 'Retrieve all orders with a date equal or greater than this value',
 				type: 'dateTime',
 				default: '',
 				routing: {
@@ -204,8 +178,7 @@ export const orderFields: INodeProperties[] = [
 			{
 				displayName: 'End Date',
 				name: 'endDate',
-				description:
-					'Retrieve all orders with a date equal or lower than this value.',
+				description: 'Retrieve all orders with a date equal or lower than this value',
 				type: 'dateTime',
 				default: '',
 				routing: {
@@ -219,8 +192,7 @@ export const orderFields: INodeProperties[] = [
 			{
 				displayName: 'Status',
 				name: 'status',
-				description:
-					'Status of the order (see sevDesk docs for the meaning of the codes).',
+				description: 'Status of the order (see sevDesk docs for the meaning of the codes)',
 				type: 'options',
 				default: '',
 				options: [
@@ -231,6 +203,10 @@ export const orderFields: INodeProperties[] = [
 					{
 						name: 'Status 100',
 						value: 100,
+					},
+					{
+						name: 'Status 1000',
+						value: 1000,
 					},
 					{
 						name: 'Status 200',
@@ -247,10 +223,6 @@ export const orderFields: INodeProperties[] = [
 					{
 						name: 'Status 750',
 						value: 750,
-					},
-					{
-						name: 'Status 1000',
-						value: 1000,
 					},
 				],
 				routing: {
@@ -285,8 +257,7 @@ export const orderFields: INodeProperties[] = [
 				name: 'download',
 				type: 'boolean',
 				default: false,
-				description:
-					'Whether sevDesk will treat the pdf as downloaded (sendType VPDF).',
+				description: 'Whether sevDesk will treat the pdf as downloaded (sendType VPDF)',
 				routing: {
 					send: {
 						type: 'query',
@@ -300,8 +271,7 @@ export const orderFields: INodeProperties[] = [
 				name: 'preventSendBy',
 				type: 'boolean',
 				default: false,
-				description:
-					'Whether prevents automatic marking as sent when retrieving the pdf.',
+				description: 'Whether prevents automatic marking as sent when retrieving the pdf',
 				routing: {
 					send: {
 						type: 'query',
@@ -322,7 +292,7 @@ export const orderFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		required: true,
-		description: 'Recipient email address.',
+		description: 'Recipient email address',
 		displayOptions: {
 			show: {
 				resource: ['order'],
@@ -343,7 +313,7 @@ export const orderFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		required: true,
-		description: 'Subject of the email.',
+		description: 'Subject of the email',
 		displayOptions: {
 			show: {
 				resource: ['order'],
@@ -400,8 +370,7 @@ export const orderFields: INodeProperties[] = [
 				name: 'copy',
 				type: 'boolean',
 				default: false,
-				description:
-					'Whether a copy of this email will be sent to your sevDesk account address.',
+				description: 'Whether a copy of this email will be sent to your sevDesk account address',
 				routing: {
 					send: {
 						type: 'body',
@@ -415,8 +384,7 @@ export const orderFields: INodeProperties[] = [
 				name: 'ccEmail',
 				type: 'string',
 				default: '',
-				description:
-					"Comma separated list of addresses to be put as CC (e.g. 'a@test.de,b@test.de').",
+				description: 'Comma-separated list of addresses to be put as CC (e.g. \'a@test.de,b@test.de\')',
 				routing: {
 					send: {
 						type: 'body',
@@ -430,8 +398,7 @@ export const orderFields: INodeProperties[] = [
 				name: 'bccEmail',
 				type: 'string',
 				default: '',
-				description:
-					"Comma separated list of addresses to be put as BCC (e.g. 'a@test.de,b@test.de').",
+				description: 'Comma-separated list of addresses to be put as BCC (e.g. \'a@test.de,b@test.de\')',
 				routing: {
 					send: {
 						type: 'body',
@@ -445,8 +412,7 @@ export const orderFields: INodeProperties[] = [
 				name: 'additionalAttachments',
 				type: 'string',
 				default: '',
-				description:
-					"IDs of additional documents from the sevDesk account, separated by commas.",
+				description: 'IDs of additional documents from the sevDesk account, separated by commas',
 				routing: {
 					send: {
 						type: 'body',

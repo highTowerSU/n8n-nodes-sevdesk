@@ -12,14 +12,10 @@ export const voucherOperations: INodeProperties[] = [
 			},
 		},
 		options: [
-			// ----------------------------------------
-			//              voucher: book
-			// ----------------------------------------
 			{
 				name: 'Book',
 				value: 'bookVoucher',
-				description:
-					'Books a voucher on a check account with optional check account transaction.',
+				description: 'Books a voucher on a check account with optional check account transaction',
 				action: 'Book a voucher',
 				routing: {
 					request: {
@@ -28,15 +24,10 @@ export const voucherOperations: INodeProperties[] = [
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              voucher: createByFactory
-			// ----------------------------------------
 			{
 				name: 'Create or Update',
 				value: 'createByFactory',
-				description:
-					'Create or update a voucher with positions via the factory endpoint.',
+				description: 'Create or update a voucher with positions via the factory endpoint',
 				action: 'Create or update a voucher',
 				routing: {
 					request: {
@@ -55,40 +46,23 @@ export const voucherOperations: INodeProperties[] = [
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              voucher: getMany
-			// ----------------------------------------
 			{
-				name: 'Get Many',
-				value: 'getMany',
-				description: 'Retrieve vouchers with optional filters.',
-				action: 'Get many vouchers',
+				name: 'Enshrine',
+				value: 'enshrine',
+				description:
+					'Sets the current date/time as `enshrined`. Enshrined vouchers cannot be changed.',
+				action: 'Enshrine a voucher',
 				routing: {
 					request: {
-						method: 'GET',
-						url: '/Voucher',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: {
-									property: 'objects',
-								},
-							},
-						],
+						method: 'PUT',
+						url: '=/Voucher/{{$parameter.voucherId}}/enshrine',
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              voucher: get
-			// ----------------------------------------
 			{
 				name: 'Get',
 				value: 'get',
-				description: 'Retrieve a voucher by ID.',
+				description: 'Retrieve a voucher by ID',
 				action: 'Get a voucher',
 				routing: {
 					request: {
@@ -107,44 +81,28 @@ export const voucherOperations: INodeProperties[] = [
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              voucher: enshrine
-			// ----------------------------------------
 			{
-				name: 'Enshrine',
-				value: 'enshrine',
-				description:
-					'Sets the current date/time as `enshrined`. Enshrined vouchers cannot be changed.',
-				action: 'Enshrine a voucher',
+				name: 'Get Many',
+				value: 'getMany',
+				description: 'Retrieve vouchers with optional filters',
+				action: 'Get many vouchers',
 				routing: {
 					request: {
-						method: 'PUT',
-						url: '=/Voucher/{{$parameter.voucherId}}/enshrine',
+						method: 'GET',
+						url: '/Voucher',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: {
+									property: 'objects',
+								},
+							},
+						],
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              voucher: resetToOpen
-			// ----------------------------------------
-			{
-				name: 'Reset to Open',
-				value: 'resetToOpen',
-				description:
-					'Resets the voucher status back to "Open" (100). Linked payments will be unlinked.',
-				action: 'Reset voucher to open',
-				routing: {
-					request: {
-						method: 'PUT',
-						url: '=/Voucher/{{$parameter.voucherId}}/resetToOpen',
-					},
-				},
-			},
-
-			// ----------------------------------------
-			//              voucher: resetToDraft
-			// ----------------------------------------
 			{
 				name: 'Reset to Draft',
 				value: 'resetToDraft',
@@ -158,15 +116,23 @@ export const voucherOperations: INodeProperties[] = [
 					},
 				},
 			},
-
-			// ----------------------------------------
-			//              voucher: uploadTempFile
-			// ----------------------------------------
+			{
+				name: 'Reset to Open',
+				value: 'resetToOpen',
+				description:
+					'Resets the voucher status back to "Open" (100). Linked payments will be unlinked.',
+				action: 'Reset voucher to open',
+				routing: {
+					request: {
+						method: 'PUT',
+						url: '=/Voucher/{{$parameter.voucherId}}/resetToOpen',
+					},
+				},
+			},
 			{
 				name: 'Upload Temp File',
 				value: 'uploadTempFile',
-				description:
-					'Upload a temporary file that can later be attached to a voucher.',
+				description: 'Upload a temporary file that can later be attached to a voucher',
 				action: 'Upload temp file for voucher',
 				routing: {
 					request: {
@@ -187,7 +153,7 @@ export const voucherFields: INodeProperties[] = [
 	{
 		displayName: 'Voucher ID',
 		name: 'voucherId',
-		description: 'ID of the voucher.',
+		description: 'ID of the voucher',
 		type: 'number',
 		required: true,
 		default: 0,
@@ -246,8 +212,7 @@ export const voucherFields: INodeProperties[] = [
 	{
 		displayName: 'Booking Type',
 		name: 'type',
-		description:
-			'Define a type for the booking. The following type abbreviations are available (abbreviation <-> meaning).',
+		description: 'Define a type for the booking. The following type abbreviations are available (abbreviation &lt;-&gt; meaning).',
 		type: 'options',
 		default: 'FULL_PAYMENT',
 		displayOptions: {
@@ -257,6 +222,10 @@ export const voucherFields: INodeProperties[] = [
 			},
 		},
 		options: [
+			{
+				name: 'Higher Amount Due to Reminder Charges',
+				value: 'OF',
+			},
 			{
 				name: 'Normal Booking (Full Payment)',
 				value: 'FULL_PAYMENT',
@@ -270,20 +239,16 @@ export const voucherFields: INodeProperties[] = [
 				value: 'CB',
 			},
 			{
+				name: 'Reduced Amount Due to the Monetary Traffic Costs',
+				value: 'MTC',
+			},
+			{
 				name: 'Reduced/Higher Amount Due to Currency Fluctuations (Deprecated)',
 				value: 'CF',
 			},
 			{
 				name: 'Reduced/Higher Amount Due to Other Reasons',
 				value: 'O',
-			},
-			{
-				name: 'Higher Amount Due to Reminder Charges',
-				value: 'OF',
-			},
-			{
-				name: 'Reduced Amount Due to the Monetary Traffic Costs',
-				value: 'MTC',
 			},
 		],
 		routing: {
@@ -297,7 +262,7 @@ export const voucherFields: INodeProperties[] = [
 	{
 		displayName: 'Check Account ID',
 		name: 'checkAccountId',
-		description: 'The check account on which should be booked.',
+		description: 'The check account on which should be booked',
 		hint: 'Get IDs with the sevDesk node. CheckAccount -> Get Many',
 		type: 'number',
 		default: 0,
@@ -341,8 +306,7 @@ export const voucherFields: INodeProperties[] = [
 					send: {
 						type: 'body',
 						property: 'checkAccountTransaction',
-						value:
-							'={{ { "id": $value, "objectName": "CheckAccountTransaction" } }}',
+						value: '={{ { "id": $value, "objectName": "CheckAccountTransaction" } }}',
 					},
 				},
 			},
@@ -351,8 +315,7 @@ export const voucherFields: INodeProperties[] = [
 				name: 'createFeed',
 				type: 'boolean',
 				default: false,
-				description:
-					'Whether a feed entry will be created for this booking (if supported by sevDesk).',
+				description: 'Whether a feed entry will be created for this booking (if supported by sevDesk)',
 				routing: {
 					send: {
 						type: 'body',
@@ -372,8 +335,7 @@ export const voucherFields: INodeProperties[] = [
 		name: 'note',
 		type: 'notice',
 		default: 0,
-		description:
-			'Most voucher attributes are optional and nullable, but for a valid voucher you should at least provide supplier, description, voucher date, credit/debit, voucher type, status, currency and mapAll.',
+		description: 'Most voucher attributes are optional and nullable, but for a valid voucher you should at least provide supplier, description, voucher date, credit/debit, voucher type, status, currency and mapAll',
 		displayOptions: {
 			show: {
 				resource: ['voucher'],
@@ -387,7 +349,7 @@ export const voucherFields: INodeProperties[] = [
 		type: 'number',
 		default: 0,
 		required: true,
-		description: 'The contact used in the voucher as supplier.',
+		description: 'The contact used in the voucher as supplier',
 		hint: 'Get contacts with the sevDesk node. Contacts -> Get Many',
 		displayOptions: {
 			show: {
@@ -409,8 +371,7 @@ export const voucherFields: INodeProperties[] = [
 		name: 'supplierName',
 		type: 'string',
 		default: '',
-		description:
-			'The supplier name to be shown if no supplier contact is provided or to override the contact name.',
+		description: 'The supplier name to be shown if no supplier contact is provided or to override the contact name',
 		displayOptions: {
 			show: {
 				resource: ['voucher'],
@@ -432,7 +393,7 @@ export const voucherFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		required: true,
-		description: 'Description / voucher number.',
+		description: 'Description / voucher number',
 		displayOptions: {
 			show: {
 				resource: ['voucher'],
@@ -477,7 +438,7 @@ export const voucherFields: INodeProperties[] = [
 		type: 'options',
 		default: 'C',
 		required: true,
-		description: 'Defines if your voucher is a credit (C) or debit (D).',
+		description: 'Defines if your voucher is a credit (C) or debit (D)',
 		displayOptions: {
 			show: {
 				resource: ['voucher'],
@@ -509,8 +470,7 @@ export const voucherFields: INodeProperties[] = [
 		type: 'options',
 		default: 'VOU',
 		required: true,
-		description:
-			'Type of the voucher. See sevDesk API docs for the meaning of the codes.',
+		description: 'Type of the voucher. See sevDesk API docs for the meaning of the codes.',
 		displayOptions: {
 			show: {
 				resource: ['voucher'],
@@ -654,8 +614,7 @@ export const voucherFields: INodeProperties[] = [
 				name: 'filename',
 				type: 'string',
 				default: '',
-				description:
-					'Filename of a previously uploaded temp file which should be attached to the voucher.',
+				description: 'Filename of a previously uploaded temp file which should be attached to the voucher',
 				routing: {
 					send: {
 						type: 'body',
@@ -688,7 +647,7 @@ export const voucherFields: INodeProperties[] = [
 				name: 'status',
 				type: 'options',
 				default: '',
-				description: 'Filter vouchers by status.',
+				description: 'Filter vouchers by status',
 				options: [
 					{
 						name: 'Any',
@@ -720,7 +679,7 @@ export const voucherFields: INodeProperties[] = [
 				name: 'creditDebit',
 				type: 'options',
 				default: '',
-				description: 'Filter vouchers by credit/debit.',
+				description: 'Filter vouchers by credit/debit',
 				options: [
 					{
 						name: 'Any',
@@ -748,8 +707,7 @@ export const voucherFields: INodeProperties[] = [
 				name: 'startDate',
 				type: ('dateTime' as any) || 'string',
 				default: '',
-				description:
-					'Retrieve all vouchers with a date equal or greater than this value.',
+				description: 'Retrieve all vouchers with a date equal or greater than this value',
 				routing: {
 					send: {
 						type: 'query',
@@ -763,8 +721,7 @@ export const voucherFields: INodeProperties[] = [
 				name: 'endDate',
 				type: ('dateTime' as any) || 'string',
 				default: '',
-				description:
-					'Retrieve all vouchers with a date equal or lower than this value.',
+				description: 'Retrieve all vouchers with a date equal or lower than this value',
 				routing: {
 					send: {
 						type: 'query',
@@ -800,7 +757,7 @@ export const voucherFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		required: true,
-		description: 'Name of the file to upload as temp file.',
+		description: 'Name of the file to upload as temp file',
 		displayOptions: {
 			show: {
 				resource: ['voucher'],
@@ -816,4 +773,3 @@ export const voucherFields: INodeProperties[] = [
 		},
 	},
 ];
-

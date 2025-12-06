@@ -18,8 +18,7 @@ export const voucherPoOperations: INodeProperties[] = [
 			{
 				name: 'Get Many',
 				value: 'getMany',
-				description:
-					'Retrieve voucher positions depending on the filters defined in the query.',
+				description: 'Retrieve voucher positions depending on the filters defined in the query',
 				action: 'Get many voucher positions',
 				routing: {
 					request: {
