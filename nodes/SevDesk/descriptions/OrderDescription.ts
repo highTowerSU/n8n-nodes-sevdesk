@@ -286,7 +286,7 @@ export const orderFields: INodeProperties[] = [
 				type: 'boolean',
 				default: false,
 				description:
-					'If true, sevDesk will treat the pdf as downloaded (sendType VPDF).',
+					'Whether sevDesk will treat the pdf as downloaded (sendType VPDF).',
 				routing: {
 					send: {
 						type: 'query',
@@ -301,7 +301,7 @@ export const orderFields: INodeProperties[] = [
 				type: 'boolean',
 				default: false,
 				description:
-					'If true, prevents automatic marking as sent when retrieving the pdf.',
+					'Whether prevents automatic marking as sent when retrieving the pdf.',
 				routing: {
 					send: {
 						type: 'query',
@@ -401,7 +401,7 @@ export const orderFields: INodeProperties[] = [
 				type: 'boolean',
 				default: false,
 				description:
-					'If true, a copy of this email will be sent to your sevDesk account address.',
+					'Whether a copy of this email will be sent to your sevDesk account address.',
 				routing: {
 					send: {
 						type: 'body',
@@ -508,7 +508,7 @@ export const orderFields: INodeProperties[] = [
 		default: false,
 		required: true,
 		description:
-			'If true, only a draft of the order will be created for internal use. Status of the order will not be changed.',
+			'Whether only a draft of the order will be created for internal use. Status of the order will not be changed.',
 		displayOptions: {
 			show: {
 				resource: ['order'],
