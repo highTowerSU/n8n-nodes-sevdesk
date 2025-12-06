@@ -30,6 +30,9 @@ jobs:
           echo "Using version: $VERSION"
           node -e "const fs=require('fs'); const p=require('./package.json'); p.version='$VERSION'; fs.writeFileSync('./package.json', JSON.stringify(p,null,2));"
 
+      - name: Fix
+        run: npm pkg fix
+
       - name: Build
         run: npm run build
 
