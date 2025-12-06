@@ -1,0 +1,39 @@
+name: Publish n8n node to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Version aus dem Release-Tag in package.json schreiben
+      - name: Set package.json version from tag
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          # z.B. TAG=v0.1.0 -> VERSION=0.1.0
+          VERSION="${TAG#v}"
+          echo "Using version: $VERSION"
+          node -e "const fs=require('fs'); const p=require('./package.json'); p.version='$VERSION'; fs.writeFileSync('./package.json', JSON.stringify(p,null,2));"
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
