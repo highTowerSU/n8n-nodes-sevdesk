@@ -1,0 +1,7 @@
+const { Sevdesk } = require('./dist/nodes/sevdesk/sevdesk.node');
+const { sevdeskApi } = require('./dist/credentials/sevdeskApi.credentials');
+
+module.exports = {
+  nodes: [Sevdesk],
+  credentials: [sevdeskApi],
+};
