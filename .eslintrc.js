@@ -40,13 +40,14 @@ module.exports = {
 		},
 		{
 			files: ['./nodes/**/*.ts'],
-			plugins: ['eslint-plugin-n8n-nodes-base'],
-			extends: ['plugin:n8n-nodes-base/nodes'],
-			rules: {
-				'n8n-nodes-base/node-execute-block-missing-continue-on-fail': 'off',
-				'n8n-nodes-base/node-resource-description-filename-against-convention': 'off',
-				'n8n-nodes-base/node-param-fixed-collection-type-unsorted-items': 'off',
-			},
-		},
-	],
+                        plugins: ['eslint-plugin-n8n-nodes-base'],
+                        extends: ['plugin:n8n-nodes-base/nodes'],
+                        rules: {
+                                'n8n-nodes-base/node-execute-block-missing-continue-on-fail': 'off',
+                                'n8n-nodes-base/node-resource-description-filename-against-convention': 'off',
+                                'n8n-nodes-base/node-filename-against-convention': 'off',
+                                'n8n-nodes-base/node-param-fixed-collection-type-unsorted-items': 'off',
+                        },
+                },
+        ],
 };
