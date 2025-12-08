@@ -35,10 +35,10 @@
     "n8n": {
         "n8nNodesApiVersion": 1,
         "credentials": [
-            "dist/credentials/SevDeskApi.credentials.js"
+            "dist/credentials/sevdeskApi.credentials.js"
         ],
         "nodes": [
-            "dist/nodes/SevDesk/SevDesk.node.js"
+            "dist/nodes/sevdesk/sevdesk.node.js"
         ]
     },
     "devDependencies": {
