@@ -1,19 +1,19 @@
 {
-    "name": "@wiesinghilker/n8n-nodes-sevdesk",
-    "version": "1.0.35",
+    "name": "@ceneos.net/n8n-nodes-sevdesk",
+    "version": "0.3.16",
     "description": "n8n node for SevDesk API",
     "keywords": [
         "n8n-community-node-package"
     ],
-    "license": "MIT",
-    "homepage": "https://wiesinghilker.de",
+    "license": "GPL",
+    "homepage": "https://ceneos.net",
     "author": {
-        "name": "Tobias Wiesing",
-        "email": "opensource@wiesinghilker.de"
+        "name": "Christian Debertshäuser",
+        "email": "opensource@ceneos.net"
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com:wiesinghilker/n8n-nodes-sevdesk.git"
+        "url": "git@github.com:highTowerSU/n8n-nodes-sevdesk.git"
     },
     "engines": {
         "node": ">=18.10",
