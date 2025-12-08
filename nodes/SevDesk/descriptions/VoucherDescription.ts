@@ -193,7 +193,7 @@ export const voucherFields: INodeProperties[] = [
 		displayName: 'Booking Date',
 		name: 'date',
 		description: 'The booking date. Most likely the current date.',
-		type: ('dateTime' as any) || 'string',
+		type: 'string',
 		default: '',
 		displayOptions: {
 			show: {
@@ -412,7 +412,7 @@ export const voucherFields: INodeProperties[] = [
 	{
 		displayName: 'Voucher Date',
 		name: 'voucherDate',
-		type: ('dateTime' as any) || 'string',
+		type: 'string',
 		default: '',
 		required: true,
 		description:
@@ -705,7 +705,7 @@ export const voucherFields: INodeProperties[] = [
 			{
 				displayName: 'Start Date',
 				name: 'startDate',
-				type: ('dateTime' as any) || 'string',
+				type: 'string',
 				default: '',
 				description: 'Retrieve all vouchers with a date equal or greater than this value',
 				routing: {
@@ -719,7 +719,7 @@ export const voucherFields: INodeProperties[] = [
 			{
 				displayName: 'End Date',
 				name: 'endDate',
-				type: ('dateTime' as any) || 'string',
+				type: 'string',
 				default: '',
 				description: 'Retrieve all vouchers with a date equal or lower than this value',
 				routing: {

@@ -433,7 +433,7 @@ export const invoiceFields: INodeProperties[] = [
 		displayName: 'Invoice Date',
 		name: 'invoiceDate',
 		required: true,
-		type: 'dateTime' || 'string',
+		type: 'string',
 		hint: 'For final invoices (invoiceType = "ER"), the invoiceDate must be later than or equal to the invoiceDate of related advance (invoiceType = "AR") / partial (invoiceType = "TR") invoices.',
 		default: '',
 		description: 'Needs to be provided as timestamp or dd.mm.yyyy',
@@ -845,7 +845,7 @@ export const invoiceFields: INodeProperties[] = [
 			{
 				displayName: 'Delivery Date',
 				name: 'deliveryDate',
-				type: 'dateTime' || 'string',
+				type: 'string',
 				default: '',
 				description:
 					'Timestamp. This can also be a date range if you also use the attribute deliveryDateUntil.',
@@ -861,7 +861,7 @@ export const invoiceFields: INodeProperties[] = [
 			{
 				displayName: 'Delivery Date Until',
 				name: 'deliveryDateUntil',
-				type: 'dateTime' || 'string',
+				type: 'string',
 				default: 0,
 				description:
 					'If the delivery date should be a time range, another timestamp can be provided in this attribute * to define a range from timestamp used in deliveryDate attribute to the timestamp used here',
@@ -1000,7 +1000,7 @@ export const invoiceFields: INodeProperties[] = [
 			{
 				displayName: 'Pay Date',
 				name: 'payDate',
-				type: 'dateTime' || 'string',
+				type: 'string',
 				default: '',
 				description: 'Needs to be timestamp or dd.mm.yyyy',
 				routing: {
