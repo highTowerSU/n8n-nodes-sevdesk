@@ -38,9 +38,9 @@ import {
 
 export class SevDesk implements INodeType {
 		description: INodeTypeDescription = {
-                        displayName: 'sevDesk',
-                        name: '@ceneos.net/n8n-nodes-sevdesk',
-			group: ['output'],
+    displayName: 'sevDesk',
+    name: 'n8n-nodes-sevdesk',
+		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Consume the sevDesk API',
