@@ -38,7 +38,7 @@ import {
 
 export class SevDesk implements INodeType {
 		description: INodeTypeDescription = {
-    displayName: 'sevDesk',
+    displayName: 'SevDesk',
     name: 'n8n-nodes-sevdesk',
 		group: ['output'],
 		version: 1,
