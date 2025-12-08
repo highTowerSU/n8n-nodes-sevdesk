@@ -859,12 +859,12 @@ export const invoiceFields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Delivery Date Until',
-				name: 'deliveryDateUntil',
-				type: 'string',
-				default: '',
-				description:
-					'If the delivery date should be a time range, another timestamp can be provided in this attribute * to define a range from timestamp used in deliveryDate attribute to the timestamp used here',
+displayName: 'Delivery Date Until',
+name: 'deliveryDateUntil',
+type: 'string',
+default: '',
+description:
+'If the delivery date should be a time range, provide another timestamp here to define a range from the timestamp used in deliveryDate to this timestamp',
 				routing: {
 					send: {
 						type: 'body',
