@@ -1,47 +1,23 @@
-name: Publish n8n node to npm
-
+name: Publish Package to npmjs
 on:
   release:
-    types: [published]
-
-permissions:
-  id-token: write  # Required for OIDC
-  contents: read
-
+    types: [ published ]
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
-          scope: '@ceneos.net'
-
-      - name: Install dependencies
-        run: npm ci
-
-      # Version aus dem Release-Tag in package.json schreiben
-      - name: Set package.json version from tag
-        run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          # z.B. TAG=v0.1.0 -> VERSION=0.1.0
-          VERSION="${TAG#v}"
-          echo "Using version: $VERSION"
-          node -e "const fs=require('fs'); const p=require('./package.json'); p.version='$VERSION'; fs.writeFileSync('./package.json', JSON.stringify(p,null,2));"
-
-      - name: Fix
-        run: npm pkg fix
-
-      - name: Build
+      - run: npm ci
+      - run: npm run test
+      - run: npm run build
+      - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
 
-      - name: Publish to npm
-        run: npm publish
