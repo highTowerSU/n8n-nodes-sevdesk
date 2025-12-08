@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/highTowerSU/n8n-nodes-sevdesk.git"
   },
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
@@ -30,10 +30,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/SevDeskApi.credentials.js"
+      "dist/credentials/SevDeskApi.credentials.ts"
     ],
     "nodes": [
-      "dist/nodes/SevDesk/SevDesk.node.js"
+      "dist/nodes/SevDesk/SevDesk.node.ts"
     ]
   },
   "devDependencies": {
