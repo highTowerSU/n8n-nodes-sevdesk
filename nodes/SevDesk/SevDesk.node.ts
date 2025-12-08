@@ -37,9 +37,9 @@ import {
 } from './descriptions';
 
 export class SevDesk implements INodeType {
-		description: INodeTypeDescription = {
+                description: INodeTypeDescription = {
     displayName: 'SevDesk',
-    name: 'n8n-nodes-sevdesk',
+    name: 'sevDesk',
 		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
